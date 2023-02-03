@@ -102,57 +102,12 @@ void Prag2003()
     ll n;
     cin >> n;
 
-    if (isPrime(n))
+    if (n % 2 == 1)
     {
-        cout << n << "\n";
+        cout << "-1\n";
         return;
     }
-    unordered_map<ll, ll> m;
-    ll max_cnt = -1;
-
-    ll temp = n;
-    ll ans = n;
-
-    for (ll i = 2; i * i <= n; i++)
-    {
-        if (n % i == 0)
-        {
-            ll fac_cnt = 0;
-            while (temp % i == 0)
-            {
-                fac_cnt++;
-                temp /= i;
-            }
-
-            m[i] = fac_cnt;
-            max_cnt = max(fac_cnt, max_cnt);
-        }
-    }
-    if (temp > 1)
-    {
-        m[temp] = 1;
-    }
-
-    ll j = 0;
-    ll sum = -1;
-    ll product;
-
-    for (int j = 0; j <= max_cnt; ++j)
-    {
-        product = 1;
-        for (auto &val : m)
-        {
-            if (val.se >= 1)
-            {
-                product *= val.fi;
-                --val.se;
-            }
-        }
-        sum += product;
-        // ++j;
-    }
-
-    cout << sum << "\n";
+    cout << 1 << " " << n / 2 << "\n";
 }
 
 int main()
